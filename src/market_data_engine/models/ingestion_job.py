@@ -1,9 +1,16 @@
+from dataclasses import dataclass
+from datetime import date, datetime
+from typing import Literal
+
+
+IngestionJobStatus = Literal["pending", "running", "completed", "failed"]
+
+
+@dataclass(frozen=True)
 class IngestionJob:
-    def __init__(self, job_id, symbols, start_date, end_date, status, run_time):
-        self.job_id = job_id            # Primary Key
-        self.symbols = symbols
-        self.start_date = start_date
-        self.end_date = end_date
-        self.status = status
-        self.run_time = run_time
-        
+    job_id: str
+    symbols: tuple[str, ...]
+    start_date: date
+    end_date: date
+    status: IngestionJobStatus
+    run_time: datetime | None = None

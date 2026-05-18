@@ -1,11 +1,18 @@
-class PriceBar:
-    def __init__(self, date, open, high, low, close, adj_close, volume):
-        self.date = date
-        self.open = open
-        self.high = high
-        self.low = low
-        self.close = close
-        self.adj_close = adj_close
-        self.volume = volume
+from dataclasses import dataclass
+from datetime import date
+from typing import Literal
 
-        # Composite key: (asset_id, date, frequency)
+Interval = Literal["1d", "1wk", "1mo"]
+
+@dataclass(frozen=True)
+class PriceBar:
+    asset_id: str
+    day: date
+    interval: Interval
+    open: float
+    high: float
+    low: float
+    close: float
+    adj_close: float | None = None
+    volume: float | None = None
+    currency: str | None = None

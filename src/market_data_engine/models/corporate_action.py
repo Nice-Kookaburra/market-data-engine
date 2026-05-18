@@ -1,6 +1,14 @@
+from dataclasses import dataclass
+from datetime import date
+from typing import Literal
+
+
+CorporateActionType = Literal["split", "dividend"]
+
+
+@dataclass(frozen=True)
 class CorporateAction:
-    def __init__(self, asset_id, type, date, value):
-        self.asset_id = asset_id
-        self.type = type    # Split or Dividend
-        self.date = date
-        self.value = value
+    asset_id: str
+    action_type: CorporateActionType
+    day: date
+    value: float

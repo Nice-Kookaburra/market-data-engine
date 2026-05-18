@@ -1,6 +1,10 @@
+from dataclasses import dataclass, field
+from typing import Any
+
+
+@dataclass(frozen=True)
 class DataSource:
-    def __init__(self, name, provider, api_key_ref, rate_limits):
-        self.name = name                    # Primary Key
-        self.provider = provider
-        self.api_key_ref = api_key_ref
-        self.rate_limits = rate_limits
+    name: str
+    provider: str
+    api_key_ref: str | None = None
+    rate_limits: dict[str, Any] = field(default_factory=dict)
