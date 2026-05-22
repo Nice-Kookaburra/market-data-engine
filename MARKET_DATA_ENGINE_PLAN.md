@@ -134,6 +134,10 @@ Done when:
 - Detect missing weekday dates for daily data.
 - Return a `DataQualityReport`.
 
+TODO (Step 5):
+
+- [ ] Add holiday calendars so missing-weekday checks exclude non-trading days (exchange holidays, early closes) and reduce false positives when `check_missing_weekdays` is enabled.
+
 Done when:
 
 - Invalid bars produce clear validation errors.
