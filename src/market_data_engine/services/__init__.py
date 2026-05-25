@@ -1,5 +1,20 @@
 """Service functions for fetching and transforming market data."""
 
+from market_data_engine.services.calculations import (
+    CalculationError,
+    annualized_volatility,
+    bar_dates,
+    comparable_price,
+    log_returns,
+    log_returns_from_bars,
+    price_series,
+    rolling_mean,
+    rolling_mean_from_bars,
+    rolling_volatility,
+    rolling_volatility_from_bars,
+    simple_returns,
+    simple_returns_from_bars,
+)
 from market_data_engine.services.price_fetcher import PriceFetcher, PriceRepositoryLike
 from market_data_engine.services.validation import (
     PriceValidationError,
@@ -15,8 +30,21 @@ from market_data_engine.services.validation import (
 )
 
 __all__ = [
+    "CalculationError",
     "PriceFetcher",
     "PriceRepositoryLike",
+    "annualized_volatility",
+    "bar_dates",
+    "comparable_price",
+    "log_returns",
+    "log_returns_from_bars",
+    "price_series",
+    "rolling_mean",
+    "rolling_mean_from_bars",
+    "rolling_volatility",
+    "rolling_volatility_from_bars",
+    "simple_returns",
+    "simple_returns_from_bars",
     "PriceValidationError",
     "build_data_quality_report",
     "build_data_quality_reports",
