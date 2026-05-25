@@ -1,10 +1,8 @@
 from __future__ import annotations
 
-from collections import defaultdict
 from datetime import date, timedelta
 from typing import Iterable
 
-from market_data_engine.models.data_quality_report import DataQualityReport
 from market_data_engine.models.price_bar import Interval, PriceBar
 
 
@@ -148,43 +146,6 @@ def validate_missing_weekdays(
                 f"missing daily bar for asset={asset_id} on {missing_day.isoformat()}"
             )
     return errors
-
-
-def build_data_quality_report(
-    asset_id: str,
-    bars: Iterable[PriceBar],
-    start: date,
-    end: date,
-    *,
-    interval: Interval = "1d",
-) -> DataQualityReport:
-    asset_bars = [bar for bar in bars if bar.asset_id == asset_id and bar.interval == interval]
-    missing_dates = find_missing_weekdays(
-        asset_bars,
-        start,
-        end,
-        asset_id=asset_id,
-        interval=interval,
-    )
-    return DataQualityReport(
-        asset_id=asset_id,
-        missing_dates=missing_dates,
-    )
-
-
-def build_data_quality_reports(
-    bars: Iterable[PriceBar],
-    start: date,
-    end: date,
-    *,
-    interval: Interval = "1d",
-) -> list[DataQualityReport]:
-    bars_list = list(bars)
-    asset_ids = sorted({bar.asset_id for bar in bars_list if bar.interval == interval})
-    return [
-        build_data_quality_report(asset_id, bars_list, start, end, interval=interval)
-        for asset_id in asset_ids
-    ]
 
 
 def validate_bars(

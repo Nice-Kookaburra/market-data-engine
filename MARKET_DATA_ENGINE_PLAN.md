@@ -130,7 +130,7 @@ Done when:
 - Reject negative prices and negative volume.
 - Check `high >= low`.
 - Check open and close are within the high/low range.
-- Detect duplicate `(asset_id, interval, day)` records.
+- Detect duplicate records.
 - Detect missing weekday dates for daily data.
 - Return a `DataQualityReport`.
 

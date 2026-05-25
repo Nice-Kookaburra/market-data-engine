@@ -2,9 +2,9 @@ from datetime import date
 from unittest import TestCase
 
 from market_data_engine.models.price_bar import PriceBar
+from market_data_engine.services.data_quality import build_data_quality_report
 from market_data_engine.services.validation import (
     PriceValidationError,
-    build_data_quality_report,
     find_missing_weekdays,
     validate_bars,
     validate_missing_weekdays,

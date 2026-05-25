@@ -15,11 +15,22 @@ from market_data_engine.services.calculations import (
     simple_returns,
     simple_returns_from_bars,
 )
-from market_data_engine.services.price_fetcher import PriceFetcher, PriceRepositoryLike
-from market_data_engine.services.validation import (
-    PriceValidationError,
+from market_data_engine.services.data_quality import (
+    assess_data_quality,
     build_data_quality_report,
     build_data_quality_reports,
+    collect_validation_errors,
+    find_duplicate_dates,
+    find_outlier_dates,
+    find_stale_dates,
+)
+from market_data_engine.services.price_fetcher import (
+    FetchResult,
+    PriceFetcher,
+    PriceRepositoryLike,
+)
+from market_data_engine.services.validation import (
+    PriceValidationError,
     find_duplicate_bars,
     find_missing_weekdays,
     find_missing_weekdays_by_asset,
@@ -31,11 +42,24 @@ from market_data_engine.services.validation import (
 
 __all__ = [
     "CalculationError",
+    "FetchResult",
     "PriceFetcher",
     "PriceRepositoryLike",
+    "PriceValidationError",
     "annualized_volatility",
+    "assess_data_quality",
     "bar_dates",
+    "build_data_quality_report",
+    "build_data_quality_reports",
+    "collect_validation_errors",
     "comparable_price",
+    "find_duplicate_bars",
+    "find_duplicate_dates",
+    "find_missing_weekdays",
+    "find_missing_weekdays_by_asset",
+    "find_outlier_dates",
+    "find_stale_dates",
+    "iter_weekdays",
     "log_returns",
     "log_returns_from_bars",
     "price_series",
@@ -45,13 +69,6 @@ __all__ = [
     "rolling_volatility_from_bars",
     "simple_returns",
     "simple_returns_from_bars",
-    "PriceValidationError",
-    "build_data_quality_report",
-    "build_data_quality_reports",
-    "find_duplicate_bars",
-    "find_missing_weekdays",
-    "find_missing_weekdays_by_asset",
-    "iter_weekdays",
     "validate_bars",
     "validate_missing_weekdays",
     "validate_price_bar",
