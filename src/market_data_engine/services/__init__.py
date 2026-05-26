@@ -29,6 +29,14 @@ from market_data_engine.services.price_fetcher import (
     PriceFetcher,
     PriceRepositoryLike,
 )
+from market_data_engine.services.visualization import (
+    VisualizationError,
+    plot_price_history,
+    plot_returns,
+    plot_rolling_mean,
+    plot_rolling_volatility,
+    plot_symbol_overview,
+)
 from market_data_engine.services.validation import (
     PriceValidationError,
     find_duplicate_bars,
@@ -72,4 +80,10 @@ __all__ = [
     "validate_bars",
     "validate_missing_weekdays",
     "validate_price_bar",
+    "VisualizationError",
+    "plot_price_history",
+    "plot_returns",
+    "plot_rolling_mean",
+    "plot_rolling_volatility",
+    "plot_symbol_overview",
 ]
